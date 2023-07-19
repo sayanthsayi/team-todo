@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+     #center{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8%;
+        padding: 80px;
+        
+    }
+    body{
+        background-image: linear-gradient(to right, #434343 0%, black 100%);    
+    }
+</style>
+<div>
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{msg}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+<div>
+    <div class=""  id="center">
+        <div style="background-image: linear-gradient(to right, #870000, #190a05);padding: 100px;" class=" rounded shadow-lg" >
+            <h4 class="text-white"><span class="text-danger fs-1">L</span>ogin</h4>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <input type="text" name="username" class="form-control" placeholder="username">
+                </div>
+                <div class="mb-4">
+                    <input type="password" name="password" class="form-control" placeholder="password">
+                </div>
+                <div class="row">
+                    <input type="submit" class="btn btn-success" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
