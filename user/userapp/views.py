@@ -3,12 +3,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django . contrib import messages
 from django . contrib.auth import login,logout,authenticate
 from django . contrib. auth.models import User
+from django . contrib . auth . decorators import login_required
 
 
 # Create your views here.
-
+@login_required(login_url='Login')
 def home(request):
     return render(request,'home.html')
+
 
 def UserRegister(request):
     form = UserCreationForm()
@@ -41,10 +43,13 @@ def UserLogin(request):
 
     return render(request,"login.html")
 
+@login_required(login_url='Login')
 def ConfirmLogout(request):
     logout(request)
     messages.success(request,"logout successfully")
     return redirect('Login')
-        
+
+
+@login_required(login_url='Login')  
 def UserLogout(request):
     return render(request,"logoutconfirm.html")

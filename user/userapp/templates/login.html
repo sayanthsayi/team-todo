@@ -13,6 +13,11 @@
     body{
         background-image: linear-gradient(to right, #434343 0%, black 100%);    
     }
+    #loginbg{
+        box-shadow: 10px 5px 20px;
+        border-radius: 200px 100px;
+        
+    }
 </style>
 <div>
     {% if messages %}
@@ -26,7 +31,7 @@
     </div>
 <div>
     <div class=""  id="center">
-        <div style="background-image: linear-gradient(to right, #870000, #190a05);padding: 100px;" class=" rounded shadow-lg" >
+        <div style="background-image: linear-gradient(to right, #870000, #190a05);padding: 100px;" class="shadow-lg" id="loginbg">
             <h4 class="text-white"><span class="text-danger fs-1">L</span>ogin</h4>
             <form action="" method="POST">
                 {% csrf_token %}
