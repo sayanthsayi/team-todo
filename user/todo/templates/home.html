@@ -27,7 +27,7 @@
             {% for item in tasks %}
             {{forloop.counter}}
             <div class='bg-light p-3 mb-3'>
-                <h4><a href='#' style="text-decoration:none;color:black;">{{item.task}}</a></h4>
+                <h4><a href={% url 'update' item.id %} style="text-decoration:none;color:black;">{{item.task}}</a></h4>
             </div>
             {% endfor %}
         {% endif %}
