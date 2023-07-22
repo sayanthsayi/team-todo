@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class='container'>
+    <div>
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{msg}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <h1 class='text-center p-5'>ToDo</h1>
+    
+    <div>
+        <form method = 'POST' action=''>
+            {% csrf_token %}
+            {{form.task}}
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        {% if tasks %}
+            {% for item in tasks %}
+            {% if item.completed == True %}
+            <div class='bg-light p-3 mb-3'>
+                <h4> {{forloop.counter}}. <a href={% url 'update' item.id %} style="text-decoration:none;color:black;"><strike class='text-danger'>{{item.task}}</strike></a> <a class='btn text-danger' href={% url 'delete' item.id %}>Remove</a></h4> 
+            </div>
+            {% else %}
+            <div class='bg-light p-3 mb-3'>
+                <h4> {{forloop.counter}}. <a href={% url 'update' item.id %} style="text-decoration:none;color:black;">{{item.task}}</a> <a class='btn text-danger' href={% url 'delete' item.id %}>Remove</a></h4> 
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
