@@ -20,6 +20,9 @@
             <li class="nav-item">
               <a class="nav-link text-dark bg-white " href="{% url 'Logout' %}" tabindex="-1" aria-disabled="true">Logout</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark bg-white " tabindex="-1" aria-disabled="true"><b>{{request.user.username}}</b></a>
+            </li>
       {% else %}
             <li class="nav-item">
               <a class="nav-link text-dark bg-white " href="{% url 'UserRegister' %}">Register</a>
