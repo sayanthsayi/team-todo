@@ -31,7 +31,17 @@ def update_task(request,pk):
             user.user=request.user
             user.task=user.task.capitalize()
             user.save()
-            messages.success(request," {} Updated".format(task))
+            messages.success(request," '{}' Updated".format(task.task))
             return redirect('home')
-    context={'form':form}
+    context={'form':form,'task':task}
     return render(request,'update.html',context)
+
+def delete_task(request,pk):
+    task=TodoModel.objects.get(id=pk)
+    if task.completed == False:
+        messages.error(request,"Cann't Delete {} It's not completed yet".format(task.task))
+    else:
+        task.delete()
+        messages.success(request,"'{}' Deleted successfully".format(task.task))
+        return redirect('home')
+    return redirect('home')
